@@ -40,6 +40,21 @@ router.post('/tasks', (req, res) => {
   })
 })
 // update task
+router.put('/tasks/:name', (req, res) => {
+  const { name } = req.params;
+  const { description, completed } = req.body;
+  console.log(name, description, completed);
+  Tasks.findOne({name}).then((doc) => {
+    doc.name = name;
+    doc.description = description;
+    doc.completed = completed;
+    doc.save().then((updatedDoc) => { 
+      res.send(`${updatedDoc} has been updated`);
+    }).catch((saveException) => { console.log(saveException) })
+  }).catch((err) => {
+    res.json(err);
+  });
+});
 
 // delete task
 router.delete('/tasks/:name', (req,res) => {
