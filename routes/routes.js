@@ -29,6 +29,16 @@ router.get('/tasks/:name', (req, res) => {
 });
 
 // create task
+router.post('/tasks', (req, res) => {
+  const { name, description, completed } = req.body;
+  Tasks.create({ name, description, completed }).then((newTask) => {
+    console.log(newTask);
+    return res.json(newTask);
+  }).catch((err) => {
+    console.log("Error Occured. The error is:", err);
+    return res.json(err);
+  })
+})
 
 // update task
 
