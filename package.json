@@ -1,0 +1,20 @@
+{
+  "name": "to-do-app",
+  "version": "1.0.0",
+  "description": "The quintessential to-do application. It employs vanilla JavaScript for the front-end, MongoDB for the database layer and express.js for the server/routing.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PraveenMut/to_do_app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PraveenMut/to_do_app/issues"
+  },
+  "homepage": "https://github.com/PraveenMut/to_do_app#readme"
+}
