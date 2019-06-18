@@ -39,9 +39,19 @@ router.post('/tasks', (req, res) => {
     return res.json(err);
   })
 })
-
 // update task
 
 // delete task
+router.delete('/tasks/:name', (req,res) => {
+  const { name } = req.params;
+  Tasks.findOneAndDelete({name}).then((deletedTask) => {
+    if(!deletedTask) return res.send(`${name} not found`);
+    console.log(deletedTask)
+    return res.send("Task Deleted!");
+  }).catch((err) => {
+    console.log(err);
+    return res.json(err);
+  })
+})
 
 module.exports = router;
