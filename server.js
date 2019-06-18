@@ -28,7 +28,7 @@ app.use('/', tasks);
 
 // default route
 app.get('/', (req,res) => {
-  res.send("Response success. Application correctly started")
+  res.send("Response success. Application correctly started.")
 });
 
 // instantiate server
