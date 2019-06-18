@@ -1,6 +1,7 @@
 // require initial dependencies
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const mongoose = require('mongoose');
 const tasks = require('./routes/routes')
 
@@ -9,6 +10,7 @@ const PORT = 3000;
 
 // use middleware dependencies
 app.use(express.json());
+app.use(cors())
 
 // use encoded form depdency
 app.use(express.urlencoded({extended: false}));
