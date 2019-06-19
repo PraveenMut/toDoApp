@@ -6,12 +6,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>To do list</title>
+  <title>Noted - Notes App</title>
 </head>
 <body>
   <div id="navbar">
     <div class="content">
-      <img id="img-logo" src="./notes-icon.png"><span id="bannertext">Note it!</span>
+      <img id="img-logo" src="./notes-icon.png"><span id="bannertext">Noted.</span>
     </div>
     <div class="search">
       <form>
@@ -19,6 +19,21 @@
       </div>
       <div class="search-button"><button type="button" class="btn btn-outline-success">Search!</button>
       </div>
+    </div>
+    <form>
+      <div class="row add-note-container">
+        <div class="col note-child">
+          <input type="text" class="form-control border-0" placeholder="Title of note">
+          <hr id="form-sep" />
+          <textarea class="form-control my-2 border-0" id="note-contents" rows="4" placeholder="What's on your mind?"></textarea>
+        </div>
+        <div class="col">
+          <button type="button" class="btn btn-outline-success">Add!</button>
+        </div>
+      </div>
+    </form>
+    <hr />
+    <div id="cards-container">
     </div>
   <script src="./index.js"></script>
 </body>

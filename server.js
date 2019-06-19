@@ -11,7 +11,7 @@ const PORT = 3000;
 // use middleware dependencies
 app.use(express.json());
 app.use(cors());
-app.use(express.static());
+app.use(express.static('./public'));
 
 // use encoded form depdency
 app.use(express.urlencoded({extended: false}));
