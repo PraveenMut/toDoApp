@@ -1,6 +1,4 @@
 window.addEventListener("load", getAllNotes);
-addButton.addEventListener("click", postNote)
-const axios = require('axios');
 
 // getElements factory function
 function getElements() {
@@ -33,6 +31,8 @@ function getAllNotes() {
 }
 
 // add notes functionality
+getElements().addButton.addEventListener("click", postNote)
+
 function postNote() {
   data = {
     name: getElements().createNoteTitle.value,
@@ -40,6 +40,8 @@ function postNote() {
     completed: false,
   }
   axios.post('/tasks', data).then((res => {
+    console.log(`Status Code: ${res.status}`);
+    console.log(`Entire Response: ${res.data}`);
     getAllNotes();
   })).catch((exception => {
     console.log(exception);
@@ -50,5 +52,6 @@ function postNote() {
 
 
 // delete notes functionality
+
 
 // fetch("http://localhost:3000/tasks").then((response) => { return response.json() }).then((data) => { allData = data })
