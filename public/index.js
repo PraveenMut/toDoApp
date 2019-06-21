@@ -1,9 +1,14 @@
 window.addEventListener("load", getAllNotes);
+addButton.addEventListener("click", postNote)
+const axios = require('axios');
 
 // getElements factory function
 function getElements() {
   return {
     cardsContainer: document.querySelector('#cards-container'),
+    createNoteTitle: document.querySelector('#create-note-title'),
+    createNoteCotents: document.querySelector('#create-note-contents'),
+    addButton: document.querySelector('#add-button'),
   }
 }
 
@@ -26,4 +31,24 @@ function getAllNotes() {
     });
   })
 }
+
+// add notes functionality
+function postNote() {
+  data = {
+    name: getElements().createNoteTitle.value,
+    description: getElements().createNoteTitle.value,
+    completed: false,
+  }
+  axios.post('/tasks', data).then((res => {
+    getAllNotes();
+  })).catch((exception => {
+    console.log(exception);
+  }))
+};
+
+// update notes functionality
+
+
+// delete notes functionality
+
 // fetch("http://localhost:3000/tasks").then((response) => { return response.json() }).then((data) => { allData = data })
