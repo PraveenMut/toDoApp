@@ -7,8 +7,22 @@ function getElements() {
     createNoteTitle: document.querySelector('#create-note-title'),
     createNoteCotents: document.querySelector('#create-note-contents'),
     addButton: document.querySelector('#add-button'),
+    modal: document.querySelector("#edit-content-modal"),
+    closeModal: document.querySelector(".close"),
   }
 }
+
+
+// Modal close functionality
+getElements().closeModal.addEventListener("click", () => {
+  getElements().modal.style.display = "none";
+});
+
+window.addEventListener("click", (listen) => {
+  if(listen.target === getElements().modal) {
+    getElements().modal.style.display = "none";
+  };
+});
 
 // getAllNotes Function (R)
 function getAllNotes() {
@@ -51,7 +65,14 @@ function postNote() {
 
 // update notes functionality (U)
 function editNote(task) {
-
+  getElements().modal.style.display = "block";
+  // get the single task by name, which retuns a promise
+  // store it by creating a promise in this function
+  // then change css properties from find in the fields
+  // then display modal
+  // store data
+  // axios post
+  // ajax close
 }
 
 // delete notes functionality (D)

@@ -1,3 +1,41 @@
+/* The Background of the Modal */
+.modal {
+  display: none; /* Stay Hidden by default */
+  position: fixed;
+  z-index: 1; /* keep ahead of the main content */
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgb(0,0,0); /* color to fallback on */
+  background-color: rgba(0,0,0,0.3);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 60%;
+  box-shadow: 0 1px 3px 0 rgba(60,64,67,0.302),
+    0 4px 8px 3px rgba(60,64,67,0.14)
+}
+
+.close {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 auto;
+  letter-spacing: 0.65px;
+}
+
+.close:hover,
+.close:focus {
+  color: #F28B82;
+  text-decoration: none;
+}
+
 #navbar {
   display: flex;
   flex-flow: row;
