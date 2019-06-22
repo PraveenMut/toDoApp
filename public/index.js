@@ -7,8 +7,11 @@ function getElements() {
     createNoteTitle: document.querySelector('#create-note-title'),
     createNoteCotents: document.querySelector('#create-note-contents'),
     addButton: document.querySelector('#add-button'),
-    modal: document.querySelector("#edit-content-modal"),
-    closeModal: document.querySelector(".close"),
+    modal: document.querySelector('#edit-content-modal'),
+    closeModal: document.querySelector('.close'),
+    noteTitle: document.querySelector('#edit-note-title'),
+    noteContents: document.querySelector('#edit-note-contents'),
+    completedCheckbox: document.querySelector('#isCompleted')
   }
 }
 
@@ -63,11 +66,28 @@ function postNote() {
   }))
 };
 
+// get Single note functionality (R)
+async function getSingleNote(taskName) {
+  return fetch(`/tasks/${taskName}`).then((serverResponse) => {
+    return serverResponse.json();
+  }).then((parsed_data) => { 
+    return parsed_data
+  }).catch((exception) => console.log(exception))
+}
+
 // update notes functionality (U)
-function editNote(task) {
-  getElements().modal.style.display = "block";
+async function editNote(task) {
   // get the single task by name, which retuns a promise
   // store it by creating a promise in this function
+  getSingleNote(task).then((task_data) => {
+    getElements().noteTitle.attributes.value.nodeValue = task_data.name
+    getElements().noteContents.innerHTML = task_data.description;
+    let completedCheckbox = getElements().completedCheckbox;
+    if(task_data.completed) {
+      completedCheckbox.checked = true;
+    };
+    getElements().modal.style.display = "block";
+  })
   // then change css properties from find in the fields
   // then display modal
   // store data
