@@ -31,6 +31,7 @@ window.addEventListener("click", (listen) => {
 // getAllNotes Function (R)
 function getAllNotes() {
   getElements().cardsContainer.innerHTML = '';
+  contentNullifier(getElements().createNoteTitle, getElements().createNoteCotents)
   fetch('tasks').then((serverResponse) => {
     return serverResponse.json();
   }).then((parsed_data) => {
@@ -46,6 +47,14 @@ function getAllNotes() {
     </div>`
     getElements().cardsContainer.insertAdjacentHTML('afterbegin', content)
     });
+  })
+}
+
+// nullifier innerHTML & value contents
+function contentNullifier(...args) {
+  args.forEach((arg) => {
+    arg.value = "";
+    arg.innerHTML = "";
   })
 }
 
