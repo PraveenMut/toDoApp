@@ -13,8 +13,7 @@
   <!-- The Modal itself -->
 <div id="edit-content-modal" class="modal">
     <!-- The Modal Content -->
-      <div class="modal-content">
-        <form>
+      <div class="modal-content" data-task-id="">
           <div class="form-group">
             <input type="text" class="form-control" id="edit-note-title" value="Enter Title" />
           </div>
@@ -26,9 +25,8 @@
             <input type="checkbox" id="isCompleted">
           </div>
         <div>
-          <button id="submitChanges" class="btn btn-primary">Submit Changes</button>
+          <button id="submitChanges" onclick="updateNote()" class="btn btn-primary">Submit Changes</button>
           </div>
-         </form>
            <span class="close">Close</span>
       </div>
     </div>    

@@ -8,10 +8,11 @@ function getElements() {
     createNoteCotents: document.querySelector('#create-note-contents'),
     addButton: document.querySelector('#add-button'),
     modal: document.querySelector('#edit-content-modal'),
+    modalContent: document.querySelector('.modal-content'),
     closeModal: document.querySelector('.close'),
     noteTitle: document.querySelector('#edit-note-title'),
     noteContents: document.querySelector('#edit-note-contents'),
-    completedCheckbox: document.querySelector('#isCompleted')
+    completedCheckbox: document.querySelector('#isCompleted'),
   }
 }
 
@@ -80,8 +81,9 @@ async function editNote(task) {
   // get the single task by name, which retuns a promise
   // store it by creating a promise in this function
   getSingleNote(task).then((task_data) => {
-    getElements().noteTitle.attributes.value.nodeValue = task_data.name
+    getElements().noteTitle.attributes.value.nodeValue = task_data.name;
     getElements().noteContents.innerHTML = task_data.description;
+    getElements().modalContent.dataset.taskId = encodeURI(task_data.name)
     let completedCheckbox = getElements().completedCheckbox;
     if(task_data.completed) {
       completedCheckbox.checked = true;
@@ -93,6 +95,21 @@ async function editNote(task) {
   // store data
   // axios post
   // ajax close
+}
+
+function updateNote() {
+  const taskIdentifier = getElements().modalContent.dataset.taskId
+  const data = {
+    name: getElements().noteTitle.value,
+    description: getElements().noteContents.value,
+    completed: getElements().completedCheckbox.checked
+  }
+  axios.put(`/tasks/${taskIdentifier}`, data).then((res) => {
+    console.log("Task Updated Successfully", res);
+    getElements().modalContent.dataset.taskId = "";
+    getElements().modal.style.display = "none";
+    getAllNotes();
+  }).catch((exception) => console.log("Error has occured:", exception));
 }
 
 // delete notes functionality (D)
