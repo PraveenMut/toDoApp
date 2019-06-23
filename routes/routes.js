@@ -69,4 +69,16 @@ router.delete('/tasks/:name', (req,res) => {
   })
 })
 
+// search tasks through like regex expressions
+router.get('/tasks/search/:name', (req, res) => {
+  const { name: searchParam } = req.params;
+  Tasks.find({ name: { $regex: String(searchParam), $options: "i" } }).then((foundTasks) => {
+    console.log("Tasks found", foundTasks);
+    return res.send(foundTasks);
+  }).catch((err) => { 
+    console.log(err);
+    return res.json(err);
+  });
+});
+
 module.exports = router;
